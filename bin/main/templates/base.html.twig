@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>
+		{% block titulo %} {% endblock titulo %}
+	</title>
+</head>
+<body>
+<h1>Sistema de refugio animales</h1>
+
+<h3>Bienvenido: {{ username }}</h3>
+
+<a href="/logout">Cerrar Sesion</a>
+
+{% block contenido %}
+
+{% endblock contenido %}
+	
+</body>
+</html>

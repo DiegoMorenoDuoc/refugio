@@ -1,0 +1,81 @@
+
+{% extends 'base.html.twig' %}
+
+
+{% block contenido %}
+
+
+<h1>Modificar Animal</h1>
+
+
+<form action="actualizar" method="post">
+	<input type="hidden" name="txtId" id="txtId" value="{{ a.getId() }}"/>
+	<table>
+		<tr>
+			<td><label for="">Nombre</label></td>
+			<td><input type="text" name="txtNombre" id="txtNombre" value="{{ a.getNombre() }}" /></td>
+		</tr>
+		<tr>
+			<td><label for="">Fecha ingreso</label></td>
+			<td><input type="date" name="txtFechaIngreso"
+				id="txtFechaIngreso" value="{{ a.getFechaIngreso() }}" /></td>
+
+		</tr>
+		
+		<tr>
+			<td>
+				<label for="">Familia</label>
+			</td>
+			<td>
+				<select name="cboFamilia" id="cboFamilia">
+					<option value="">Seleccionar</option>
+					
+					{% for f in familias %}
+					
+					<option  {{ (f.getId() == a.getRaza().getFamilia().getId())?'selected':''}} value="{{ f.getId() }}">{{ f.getNombre() }}</option>
+					
+					{% endfor %}
+					
+				</select>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>
+				<label for="">Raza</label>
+			</td>
+			<td>
+				<select name="cboRaza" id="cboRaza">
+					<option value="">seleccionar</option>
+					
+					{% for r in razas %}
+					<option {{ (r.getId() == a.getRaza().getId())?'selected':'' }} value="{{ r.getId() }}">{{ r.getNombre() }}</option>
+					{% endfor %}
+					
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label for="">Peso</label>
+			</td>
+			<td>
+				<input type="number" name="txtPeso" id="txtPeso" value="{{ a.getPeso() }}" />
+			</td>
+		</tr>
+		
+		<tr>
+			<td></td>
+			<td>
+				<input type="submit" value="Modificar" />
+			</td>
+		</tr>
+	</table>
+
+ 
+</form>
+{{ mensaje }}
+
+
+{% endblock contenido %}
+
